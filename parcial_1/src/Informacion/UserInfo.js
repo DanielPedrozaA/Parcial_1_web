@@ -1,4 +1,3 @@
-// services/userService.js
 export const getUserData = () => {
     return {
         fullName: 'Natalia Manrique',
