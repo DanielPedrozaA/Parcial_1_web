@@ -8,7 +8,7 @@ git clone ("URL del repositorio")
 2. Se tienen que instalar todas las dependencias en el programa para que funciones los import se hace con el codigo como: React, Boostrap, react-i18next y react-router-dom
 npm install
 
-3. Ya con todos los pasos hechos, el siguiente es asegurar que estas en la carpeta adecuada y abrir la terminal y usar el comando:
+3. Ya con todos los pasos hechos, el siguiente es asegurar que estas en la carpeta adecuada, la cual tiene que ser parcial_1 la cual contiene el programa react instalado y abrir la terminal y usar el comando:
 npm start
 
 Con esto se puede ejectuar la aplicacion y empezar a utilizar, el programa se correra en http://localhost:3000 generalmente.
