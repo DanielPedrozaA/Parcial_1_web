@@ -1,7 +1,9 @@
 import React from 'react';
 import { getUserData } from '../Informacion/UserInfo';
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = () => {
+    const { t } = useTranslation();
     const user = getUserData();
 
     return (
@@ -20,15 +22,15 @@ const UserProfile = () => {
             <div className="d-flex align-items-center ml-4">
                 <div className="text-center mx-3">
                     <i className="fas fa-running"></i>
-                    <p>{user.bestRunningTime}</p>
+                    <p>{t('BestRunningTime')}: {user.bestRunningTime}</p>
                 </div>
                 <div className="text-center mx-3">
                     <i className="fas fa-swimmer"></i>
-                    <p>{user.bestSwimmingTime}</p>
+                    <p>{t('BestSwimmingTime')}: {user.bestSwimmingTime}</p>
                 </div>
                 <div className="text-center mx-3">
                     <i className="fas fa-biking"></i>
-                    <p>{user.bestCyclingTime}</p>
+                    <p>{t('BestCyclingTime')}: {user.bestCyclingTime}</p>
                 </div>
             </div>
         </div>

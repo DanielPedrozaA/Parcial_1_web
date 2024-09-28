@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './LogIn.css';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 
 const LogIn = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,19 +16,18 @@ const LogIn = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!email) {
-            newErrors.email = 'El correo es requerido';
+            newErrors.email = t('EmailRequired');
         } else if (!emailRegex.test(email)) {
-            newErrors.email = 'El formato del correo es inválido';
+            newErrors.email = t('InvalidEmail');
         }
 
         if (!password) {
-            newErrors.password = 'La contraseña es requerida';
+            newErrors.password = t('PasswordRequired');
         } else if (password.length < 8) {
-            newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
+            newErrors.password = t('PasswordLength');
         }
 
         return newErrors;
-
     };
 
     const handleSubmit = (e) => {
@@ -37,7 +37,6 @@ const LogIn = () => {
         if (Object.keys(formErrors).length === 0) {
             setSubmitted(true);
             console.log('Formulario enviado con éxito');
-            console.log('Datos guardados:');
             navigate('/home');
         } else {
             setErrors(formErrors);
@@ -48,11 +47,11 @@ const LogIn = () => {
         <div className="edit-profile-container">
             <div className="card p-4">
                 <div className="text-left mb-4">
-                    <h1>Log In</h1>
+                    <h1>{t('Login')}</h1>  { }
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label className="form-label">Email</label>
+                        <label className="form-label">{t('Email')}</label>
                         <input
                             type="email"
                             className="form-control"
@@ -64,7 +63,7 @@ const LogIn = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label">Password</label>
+                        <label className="form-label">{t('Password')}</label>
                         <input
                             type="password"
                             className="form-control"
@@ -77,11 +76,11 @@ const LogIn = () => {
 
                     <div className="text-left">
                         <button type="submit" className="btn btn-primary btn-block btn-lg custom-save-button">
-                            Log in
+                            {t('Submit')}
                         </button>
                     </div>
                 </form>
-                {submitted && <div className="text-success text-center mt-3">Login exitoso</div>}
+                {submitted && <div className="text-success text-center mt-3">{t('LoginSuccess')}</div>}
             </div>
         </div>
     );

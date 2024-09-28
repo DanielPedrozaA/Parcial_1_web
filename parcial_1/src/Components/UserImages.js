@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import './UserImages.css';
 
 const UserImages = () => {
+    const { t } = useTranslation();
     const [showModal, setShowModal] = useState(false);
     const [selectedSession, setSelectedSession] = useState(null);
 
     const sportsData = {
         cycling: Array(10).fill({
-            title: 'Cycling Session',
-            description: 'Recorrido alrededor de la bahía de Cartagena',
+            title: t('CyclingSession'),
+            description: t('RecorridoBahia'),
             distance: '40k',
             duration: '2h10m',
             city: 'Cartagena'
         }),
         running: Array(10).fill({
-            title: 'Running Session',
-            description: 'Recorrido alrededor de la bahía de Cartagena',
+            title: t('RunningSession'),
+            description: t('RecorridoBahia'),
             distance: '10k',
             duration: '1h10m',
             city: 'Cartagena'
         }),
         swimming: Array(10).fill({
-            title: 'Swimming Session',
-            description: 'Recorrido alrededor de la bahía de Cartagena',
+            title: t('SwimmingSession'),
+            description: t('RecorridoBahia'),
             distance: '5k',
             duration: '1h00m',
             city: 'Cartagena'
@@ -43,13 +45,13 @@ const UserImages = () => {
         <div className="container mt-5">
             <div className="row text-center">
                 <div className="col">
-                    <h2>Cycling</h2>
+                    <h2>{t('Cycling')}</h2>
                 </div>
                 <div className="col">
-                    <h2>Running</h2>
+                    <h2>{t('Running')}</h2>
                 </div>
                 <div className="col">
-                    <h2>Swimming</h2>
+                    <h2>{t('Swimming')}</h2>
                 </div>
             </div>
 
@@ -70,7 +72,7 @@ const UserImages = () => {
                                             <h5 className="card-title">{session.title}</h5>
                                             <p className="card-text">
                                                 {session.description} <br />
-                                                {session.distance} - {session.duration}
+                                                {t('Distance')}: {session.distance} - {t('Duration')}: {session.duration}
                                             </p>
                                         </div>
                                     </div>
@@ -92,11 +94,11 @@ const UserImages = () => {
                             className="img-fluid"
                         />
                         <p className="mt-3">{selectedSession.description}</p>
-                        <p>{selectedSession.distance} - {selectedSession.duration}</p>
+                        <p>{t('Distance')}: {selectedSession.distance} - {t('Duration')}: {selectedSession.duration}</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleCloseModal}>
-                            Close
+                            {t('Close')}
                         </Button>
                     </Modal.Footer>
                 </Modal>
